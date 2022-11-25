@@ -8,20 +8,24 @@ const prisma = new PrismaClient();
 async function main() {
   // create two dummy users
   const user1 = await prisma.user.upsert({
-    where: { name: 'Alice' },
+    where: { email: 'asd@foo.com' },
     update: {},
-    create: { name: 'Alice' },
+    create: { name: 'Alice', email: 'asd@foo.com' },
   });
 
-  const user2 = await prisma.user.upsert({
-    where: { name: 'Bob' },
+  console.log({ user1 });
+
+  // create a dummy url
+  const url1 = await prisma.url.upsert({
+    where: { url: 'https://www.google.com' },
     update: {},
     create: {
-      name: 'Bob',
+      url: 'https://www.google.com',
+      domain: 'google.com',
+      path: '/',
+      // userId: user1.id,
     },
   });
-
-  console.log({ user1, user2 });
 }
 
 // execute the main function

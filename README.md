@@ -72,11 +72,12 @@ run: npx prisma db seed
 
 ## TODO:
 
-# create authentication and authorization for user resources (url) - look up custom decorators
-
-# create a the crud methods
-
-# learn how to write tests
+create authentication and authorization for user resources (url) - look up custom decorators
+learn how to write tests
+create the prisma schema:
+- allowed_domains - domains that will be collected by the extension
+- Users - the user has a many to many relationship with the urls table
+- Urls - has a one to many (one domain to many urls), where a url is an allowed domain + path. The urls table has a many to many relationship with the users table.
 
 ## Support
 
